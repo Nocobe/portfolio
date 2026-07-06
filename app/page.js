@@ -1,65 +1,111 @@
-import Image from "next/image";
+import { FaGithub, FaLinkedin } from "react-icons/fa";
+
+const projects = [
+  {
+    title: "DocuChat",
+    description: "An AI-powered document chat application. Coming soon",
+    tags: ["RAG", "Claude API", "pgvector"],
+  },
+  {
+    title: "CoWrite",
+    description: "A real time collaborative writing tool. Coming soon.",
+    tags: ["WebSockets", "Yjs", "Node,js"]
+  },
+  {
+    title: "LinkVault",
+    description: "A smart bookmark manager. Coming soon",
+    tags: ["Next.js", "Supabase"]
+  },
+  {
+    title: "FocusFlow",
+    description: "A productivity app for iOS. Coming soon",
+    tags: ["iOS", "SwiftUI"],
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.js file.
+    <main className="px-6">
+
+      {/* Introduction */}
+      <section className="min-h-screen flex flex-col items-center justify-center">
+        <div className="max-w-2x1 w-full">
+          <h1 className="text-5x1 font-bold mb-4">
+            Hi, I&apos;m Noah
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className='text-x1 text-gray-600 mb-8'>
+            A Melbourne based Software Developer who loves building things.
+            I work with Javascript, React and Node.js to bring ideas to life.
+            Currently looking for my next opportunity in Melbourne
           </p>
+          <div className="flex gap-4 mb-8">
+            <a
+              href='#projects'
+              className="bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transistion"
+            >
+              View My Work
+            </a>
+
+            <a
+              href='#/resume.pdf'
+              className="border border-black px-6 py-3 rounded-lg hover:bg-gray-100 transistion"
+            >
+              Download Resume
+            </a>
+          </div>
+          <div className="flex gap-4">
+            <a href="https://github.com/Nocobe" target="_blank">
+              <FaGithub size={28}/>
+            </a>
+            <a href="https://www.linkedin.com/in/noah-convery-44364a166/" target="_blank">
+              <FaLinkedin size={28}></FaLinkedin>
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      {/* Projects */}
+      <section id="projects" className="max-w-5x1 mx-auto py-24">
+        <h2 className="text-3x1 font-bold mb-12">
+          Projects
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {projects.map((project) => (
+            <div 
+              key={project.title}
+              className="border border-gray-200 rounded-x1 p-6 flex flex-col gap-4"
+            >
+              <h3 className="text-x1 font-bold">{project.title}</h3>
+              <p className="text-gray-600 flex-1">{project.description}</p>
+              <div className="flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="bg-gray-100 text-gray-600 text-sm px-3 py-1 rounded-full"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <div className="flex gap-3 mt-2">
+                <button
+                  disabled
+                  className="border border-gray-200 text-gray-400 px-4 py-2 rounded-lg text-sm cursor-not-allowed"
+                >
+                  Live Demo
+                </button>
+                <button
+                  disabled
+                  className="border border-gray-200 text-gray-400 px-4 py-2 rounded-lg text-sm cursor-not-allowed"
+                >
+                  GitHub
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
-      </main>
-    </div>
+      </section>
+      
+    </main>
   );
 }
